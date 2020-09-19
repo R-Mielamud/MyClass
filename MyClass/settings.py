@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '*4rk1c61c9+y)@9wo#t4dx9=pvv8+wka40a9__sbc&2((y!ytn'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = bool(os.environ.get("DJ_DEBUG", "True"))
+DEBUG = os.environ.get("DJ_DEBUG", "1") == "1"
 
 # Development is in progress
 ALLOWED_HOSTS = ["*"]
@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     "rest_framework",
-    "class"
+    "class",
+    "authorization"
 ]
 
 MIDDLEWARE = [
