@@ -1,0 +1,24 @@
+{
+  "name": "myclass-frontend",
+  "version": "1.0.0",
+  "description": "MyClass frontend app",
+  "main": "index.tsx",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/R-Mielamud/MyClass.git"
+  },
+  "keywords": [
+    "django-react",
+    "frontend",
+    "react"
+  ],
+  "author": "Roman Melamud",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/R-Mielamud/MyClass/issues"
+  },
+  "homepage": "https://github.com/R-Mielamud/MyClass#readme"
+}
