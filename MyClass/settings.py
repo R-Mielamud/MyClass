@@ -11,6 +11,9 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+import dotenv
+
+dotenv.load_dotenv()
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -20,10 +23,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '*4rk1c61c9+y)@9wo#t4dx9=pvv8+wka40a9__sbc&2((y!ytn'
+SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get("DJ_DEBUG", "1") == "1"
+DEBUG = os.environ.get("DEBUG", "1") == "1"
 
 # Development is in progress
 ALLOWED_HOSTS = ["*"]
@@ -41,7 +44,6 @@ INSTALLED_APPS = [
     "rest_framework",
     "class",
     "authorization",
-    "frontend",
 ]
 
 MIDDLEWARE = [
@@ -52,6 +54,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "authorization.middleware.ExtractJWT",
+    "authorization.middleware.SetUser",
 ]
 
 ROOT_URLCONF = 'MyClass.urls'
@@ -131,3 +135,19 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
 MEDIA_URL = "/media/"
+
+# JWT
+# https://jwt.io/
+
+JWT_KEY = os.environ.get("JWT_KEY", "jwt123key456")
+
+JWT_USER_FIELD = os.environ.get("JWT_USER_FIELD", "user")
+
+JWT_PREFIX = "Bearer"
+
+JWT_ALGORITHM = "HS256"
+
+JWT_ROUTE_WHITE_LIST = [
+    "/api/auth/login/",
+    "/api/auth/register/",
+]

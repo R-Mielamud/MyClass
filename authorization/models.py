@@ -6,6 +6,7 @@ class User(Model):
     last_name = CharField(max_length=50)
     email = EmailField(unique=True)
     password = CharField(max_length=100)
+    is_active = True
 
     @staticmethod
     def authorize(email, password):
