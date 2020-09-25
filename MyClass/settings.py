@@ -139,7 +139,7 @@ MEDIA_URL = "/media/"
 # JWT
 # https://jwt.io/
 
-JWT_KEY = os.environ.get("JWT_KEY", "jwt123key456")
+# Using Django's secret key as a JWT key.
 
 JWT_USER_FIELD = os.environ.get("JWT_USER_FIELD", "user")
 
