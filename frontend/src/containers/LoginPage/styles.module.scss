@@ -1,0 +1,9 @@
+@import '../../styles/variables.scss';
+
+.list {
+    margin-top: 10px !important;
+
+    a {
+        color: $dark-primary !important;
+    }
+}

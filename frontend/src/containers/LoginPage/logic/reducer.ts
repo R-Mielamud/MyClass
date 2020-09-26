@@ -8,6 +8,7 @@ export const authReducer = createReducer<AuthState>(initialState, {
             ...state,
             user: action.user,
             isAuthorized: Boolean(action.user),
+            profileLoaded: true,
         };
     },
 });

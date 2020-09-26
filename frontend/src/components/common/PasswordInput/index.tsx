@@ -33,7 +33,7 @@ const PasswordInput: React.FC<Props> = ({ error, value, setValue, setIsValid }) 
                     error={error}
                     placeholder="Password"
                     onChange={(event, data) => setPassword(data.value)}
-                    onBlur={() => setIsValid(Boolean(value) && value.length > 4)}
+                    onBlur={() => setIsValid(Boolean(value) && value.length >= 6)}
                 />
             }
         />

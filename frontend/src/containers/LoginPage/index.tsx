@@ -6,6 +6,7 @@ import LoginForm from '../../components/LoginForm';
 import { RootState } from '../../typings/rootState';
 import { logIn } from './logic/actions';
 import { LogIn } from './logic/actionTypes';
+import styles from './styles.module.scss';
 
 const LoginPage: React.FC = () => {
     const dispatch = useDispatch();
@@ -25,6 +26,14 @@ const LoginPage: React.FC = () => {
                 <Header as="h1">Log in to MyClass</Header>
                 <Segment>
                     <LoginForm onSubmit={submit} />
+                    <List bulleted horizontal className={styles.list}>
+                        <List.Item as="a" href="/register">
+                            Sign up
+                        </List.Item>
+                        <List.Item as="a" href="/password">
+                            Forgot password?
+                        </List.Item>
+                    </List>
                 </Segment>
             </Grid.Column>
         </Grid>

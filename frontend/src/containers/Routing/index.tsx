@@ -1,21 +1,31 @@
 import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { Switch } from 'react-router';
+import { useDispatch, useSelector } from 'react-redux';
+import { Router, Switch } from 'react-router';
 import PublicRoute from '../../components/PublicRoute';
 import LogIn from '../../pages/LogIn';
+import Register from '../../pages/Register';
 import { loadProfile } from '../LoginPage/logic/actions';
+import history from '../../helpers/history.helper';
+import { RootState } from '../../typings/rootState';
+import Spinner from '../../components/common/Spinner';
 
 const Routing: React.FC = () => {
     const dispatch = useDispatch();
+    const { profileLoaded } = useSelector((state: RootState) => state.auth);
 
     useEffect(() => {
         dispatch(loadProfile());
     }, [dispatch]);
 
+    if (!profileLoaded) return <Spinner />;
+
     return (
-        <Switch>
-            <PublicRoute restricred path="/login" exact component={LogIn} />
-        </Switch>
+        <Router history={history}>
+            <Switch>
+                <PublicRoute restricred path="/login" exact component={LogIn} />
+                <PublicRoute restricred path="/register" exact component={Register} />
+            </Switch>
+        </Router>
     );
 };
 
