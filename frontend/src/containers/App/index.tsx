@@ -3,6 +3,7 @@ import { Provider as ReduxProvider } from 'react-redux';
 import store from '../../redux/store';
 import { Router } from 'react-router';
 import history from '../../helpers/history.helper';
+import Routing from '../Routing';
 
 const App: React.FC = () => {
     return (

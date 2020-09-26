@@ -1,22 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import { useSelector } from 'react-redux';
 import { Header as HeaderUI, Dropdown, Menu } from 'semantic-ui-react';
 import Avatar from '../../components/Avatar';
 import getUsername from '../../helpers/getUsername.helper';
-import { getProfile } from '../../services/auth.service';
+import { RootState } from '../../typings/rootState';
 import styles from './styles.module.scss';
 
 const Header: React.FC = () => {
-    const [user, setUser] = useState<WebApi.Entity.User | null>(null);
-    const [mustFetchUser, setMustFetchUser] = useState<boolean>(true);
+    const { user } = useSelector((state: RootState) => state.auth);
 
-    useEffect(() => {
-        if (mustFetchUser) {
-            setMustFetchUser(false);
-            getProfile().then(setUser);
-        }
-    }, [mustFetchUser]);
-
-    if (!user) return null;
+    if (!user) {
+        return null;
+    }
 
     const username: string = getUsername(user);
 

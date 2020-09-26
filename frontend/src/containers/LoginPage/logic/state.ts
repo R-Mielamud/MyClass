@@ -1,3 +1,5 @@
+import { getToken } from '../../../helpers/userToken.helper';
+
 export interface AuthState {
     user: WebApi.Entity.User | null;
     jwtToken: string | null;
@@ -6,6 +8,6 @@ export interface AuthState {
 
 export const initialState: AuthState = {
     user: null,
-    jwtToken: null,
+    jwtToken: getToken(),
     isAuthorized: false,
 };

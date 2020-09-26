@@ -1,6 +1,6 @@
 import qs from 'querystring';
-import { LocalStorageKeys } from '../constants/LocalStorageKeys';
 import { WebApiException } from '../typings/webApiException';
+import { getToken } from './userToken.helper';
 
 const BASE_URL = process.env.REACT_APP_API_BASE_URL ?? '/';
 const API = 'api/';
@@ -23,7 +23,7 @@ interface RequestArgs {
     endpoint: string;
     skipAuthorization?: boolean;
     query?: Record<string, any>;
-    body?: Body;
+    body?: any;
     attachment?: File;
     attachmentFieldName?: string;
 }
@@ -59,7 +59,7 @@ const getUrl = (args: RequestArgs): RequestInfo =>
 
 const getArgs = (args: RequestArgs): RequestInit => {
     const headers: Headers | string[][] | Record<string, string> | undefined = {};
-    const token = localStorage.getItem(LocalStorageKeys.UserToken);
+    const token = getToken();
     let body: Body;
     if (token && !args.skipAuthorization) {
         headers.Authorization = `Bearer ${token}`;

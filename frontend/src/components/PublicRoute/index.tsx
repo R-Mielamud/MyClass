@@ -9,12 +9,9 @@ interface Props {
 
 const PublicRoute: React.FC<RouteProps & Props> = (props) => {
     const { isAuthorized } = useSelector((state: RootState) => state.auth);
+    const Component = isAuthorized && props.restricred ? () => <Redirect to="/" /> : props.component;
 
-    if (isAuthorized && props.restricred) {
-        return <Redirect to="/" />;
-    }
-
-    return <Route {...props} />;
+    return <Route {...props} component={Component} />;
 };
 
 export default PublicRoute;
