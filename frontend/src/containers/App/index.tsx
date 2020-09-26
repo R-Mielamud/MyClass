@@ -1,8 +1,17 @@
 import React from 'react';
-import Header from '../Header';
+import { Provider as ReduxProvider } from 'react-redux';
+import store from '../../redux/store';
+import { Router } from 'react-router';
+import history from '../../helpers/history.helper';
 
 const App: React.FC = () => {
-    return <Header />;
+    return (
+        <ReduxProvider store={store}>
+            <Router history={history}>
+                <Routing />
+            </Router>
+        </ReduxProvider>
+    );
 };
 
 export default App;

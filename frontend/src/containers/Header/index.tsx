@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Header as HeaderUI, Dropdown, Menu } from 'semantic-ui-react';
 import Avatar from '../../components/Avatar';
-import getUsername from '../../helpers/getUsername';
+import getUsername from '../../helpers/getUsername.helper';
 import { getProfile } from '../../services/auth.service';
 import styles from './styles.module.scss';
 
