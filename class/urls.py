@@ -3,7 +3,7 @@ from django.urls import path, include
 from .views import *
 
 router = DefaultRouter()
-router.register("", ClassAPIView)
+router.register("", ClassAPIView, basename="class")
 
 urlpatterns = [
     path("", include(router.urls)),

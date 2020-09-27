@@ -8,6 +8,8 @@ import { loadProfile } from '../LoginPage/logic/actions';
 import history from '../../helpers/history.helper';
 import { RootState } from '../../typings/rootState';
 import Spinner from '../../components/common/Spinner';
+import PrivateRoute from '../../components/PrivateRoute';
+import Classes from '../../pages/Classes';
 
 const Routing: React.FC = () => {
     const dispatch = useDispatch();
@@ -22,6 +24,7 @@ const Routing: React.FC = () => {
     return (
         <Router history={history}>
             <Switch>
+                <PrivateRoute path="/" exact component={Classes} />
                 <PublicRoute restricred path="/login" exact component={LogIn} />
                 <PublicRoute restricred path="/register" exact component={Register} />
             </Switch>

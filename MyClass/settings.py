@@ -80,6 +80,13 @@ TEMPLATES = [
     },
 ]
 
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'MyClass.session_auth.CsrfExemptSessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication'
+    ),
+}
+
 WSGI_APPLICATION = 'MyClass.wsgi.application'
 
 

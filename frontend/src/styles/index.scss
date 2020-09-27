@@ -6,6 +6,10 @@ body {
 
 .button.primary {
     background-color: $primary !important;
+
+    &:hover {
+        background-color: $dark-primary !important;
+    }
 }
 
 #root,

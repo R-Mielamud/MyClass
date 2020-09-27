@@ -1,0 +1,20 @@
+@mixin square($d) {
+    width: $d;
+    height: $d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.inner {
+    @include square(100px);
+    border-radius: 10px;
+}
+
+.outer {
+    @include square(250px);
+}
+
+.classKey {
+    font-size: 20px;
+}

@@ -1,11 +1,13 @@
 from django.db.models import *
 from helpers.password import hash_password, check_password
 
+
 class User(Model):
     first_name = CharField(max_length=50)
     last_name = CharField(max_length=50)
     email = EmailField(unique=True)
     password = CharField(max_length=100)
+    avatar = ImageField(null=True, blank=True)
     is_active = True
 
     @staticmethod
@@ -19,7 +21,7 @@ class User(Model):
             return None
 
         return user
-    
+
     @property
     def full_name(self):
         return "{} {}".format(self.first_name, self.last_name)
