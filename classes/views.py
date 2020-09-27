@@ -8,6 +8,7 @@ from channels.models import Channel
 
 class ClassAPIView(ModelViewSet):
     serializer_class = ClassSerializer
+    queryset = Class.objects.all()
 
     def list(self, request, *args, **kwargs):
         result = Class.objects.filter(students__id=request.user.id) | Class.objects.filter(

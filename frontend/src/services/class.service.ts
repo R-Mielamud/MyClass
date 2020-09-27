@@ -10,6 +10,15 @@ export const getClasses = async (): Promise<WebApi.Entity.Class[]> => {
     return (await res.json()) as WebApi.Entity.Class[];
 };
 
+export const getClassById = async (id: number): Promise<WebApi.Entity.Class> => {
+    const res: Response = await callWebApi({
+        method: 'GET',
+        endpoint: `class/${id}/`,
+    });
+
+    return (await res.json()) as WebApi.Entity.Class;
+};
+
 export const createClass = async (body: CreateClass): Promise<WebApi.Entity.Class> => {
     const res: Response = await callWebApi({
         method: 'POST',

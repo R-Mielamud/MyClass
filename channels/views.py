@@ -7,16 +7,17 @@ from django.http import JsonResponse
 
 class ChannelAPIView(ModelViewSet):
     serializer_class = ChannelSerializer
+    queryset = Channel.objects.all()
 
     def list(self, request):
-        class_id = request.GET.get("classid")
+        class_id = int(request.GET.get("classid"))
 
         try:
-            class_object = Class.object.get(pk=class_id)
+            class_object = Class.objects.get(pk=class_id)
         except:
             return JsonResponse({
                 "message": "Class does not exist",
-            })
+            }, status=404)
 
         channels = class_object.channels
         serialized = self.serializer_class(channels, many=True)

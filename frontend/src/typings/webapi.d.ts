@@ -20,7 +20,14 @@ namespace WebApi.Entity {
         join_key_teacher: string;
         teachers: User[];
         students: User[];
+        channels: Channel[];
         avatar?: string;
+    }
+
+    interface Channel extends Identified {
+        name: string;
+        creator: User;
+        members: User[];
     }
 }
 

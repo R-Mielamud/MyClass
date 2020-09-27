@@ -13,6 +13,11 @@
 
 .outer {
     @include square(250px);
+    cursor: pointer;
+
+    &:hover {
+        background-color: #eee !important;
+    }
 }
 
 .classKey {
