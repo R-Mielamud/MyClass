@@ -12,6 +12,18 @@ body {
     }
 }
 
+.required:after {
+    content: '*';
+    margin-left: 2px;
+    color: red;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    border-color: $primary !important;
+}
+
 #root,
 .fill {
     width: 100%;

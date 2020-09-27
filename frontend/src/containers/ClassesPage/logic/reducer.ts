@@ -10,4 +10,17 @@ export const classReducer = createReducer<ClassState>(initialState, {
             classesLoaded: true,
         };
     },
+    [actionTypes.CREATE_CLASS_SUCCESS](state, action: actionTypes.CreateClassSuccess) {
+        return {
+            ...state,
+            classes: [...state.classes, action.class],
+            recentlyCreatedClass: action.class,
+        };
+    },
+    [actionTypes.RESET_RECENTLY_CREATED](state) {
+        return {
+            ...state,
+            recentlyCreatedClass: null,
+        };
+    },
 });

@@ -4,6 +4,7 @@ import { Button } from 'semantic-ui-react';
 import ClassCard from '../../components/ClassCard';
 import Spinner from '../../components/common/Spinner';
 import { RootState } from '../../typings/rootState';
+import CreateClassModal from '../CreateClassModal';
 import styles from './styles.module.scss';
 
 const ClassesPage: React.FC = () => {
@@ -17,7 +18,9 @@ const ClassesPage: React.FC = () => {
         <div>
             <div className={styles.buttons}>
                 <Button>Join class</Button>
-                <Button primary>Create new class</Button>
+                <CreateClassModal>
+                    <Button primary>Create new class</Button>
+                </CreateClassModal>
             </div>
             <div className={styles.container}>
                 {classes.map((cls) => (

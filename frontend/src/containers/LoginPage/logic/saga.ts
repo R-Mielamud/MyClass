@@ -1,3 +1,4 @@
+import { NotificationManager } from 'react-notifications';
 import { all, put, call, takeEvery } from 'redux-saga/effects';
 import history from '../../../helpers/history.helper';
 import { setToken } from '../../../helpers/userToken.helper';
@@ -30,7 +31,7 @@ function* fetchLogIn(action: ReturnType<typeof actions.logIn>) {
         setToken(result.jwt_token);
         yield put(actions.successLoadProfile({ user: result.user }));
     } catch (err) {
-        alert("Sorry, can't log in."); //notif//
+        NotificationManager.error("Sorry, can't log in.", 'Error');
     }
 }
 
@@ -46,7 +47,7 @@ function* fetchRegister(action: ReturnType<typeof actions.register>) {
         setToken(result.jwt_token);
         yield put(actions.successLoadProfile({ user: result.user }));
     } catch (err) {
-        alert("Sorry, can't register."); //notif//
+        NotificationManager.error("Sorry, can't register.", 'Error');
     }
 }
 
