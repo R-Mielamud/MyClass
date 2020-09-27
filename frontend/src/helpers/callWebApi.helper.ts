@@ -1,7 +1,6 @@
 import qs from 'querystring';
 import { WebApiException } from '../typings/webApiException';
 import { getToken } from './userToken.helper';
-import cookie from 'react-cookies';
 
 const BASE_URL = process.env.REACT_APP_API_BASE_URL ?? '/';
 const API = 'api/';
@@ -60,7 +59,6 @@ const getUrl = (args: RequestArgs): RequestInfo =>
 
 const getArgs = (args: RequestArgs): RequestInit => {
     const headers: Headers | string[][] | Record<string, string> | undefined = {};
-    headers['X-CSRFToken'] = cookie.load('csrftoken');
     const token = getToken();
     let body: Body;
     if (token && !args.skipAuthorization) {

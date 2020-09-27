@@ -13,9 +13,9 @@ class Class(Model):
     text_color = CharField(max_length=7, blank=True)
     avatar = ImageField(blank=True, null=True)
     teachers = ManyToManyField(
-        to=User, related_name="teaching_classes", default=[])
+        to=User, related_name="teaching_classes", blank=True)
     students = ManyToManyField(
-        to=User, related_name="studying_classes", default=[])
+        to=User, related_name="studying_classes", blank=True)
     join_key = SlugField(max_length=8, blank=True)
     join_key_teacher = SlugField(max_length=12, blank=True)
     description = TextField(max_length=1000, blank=True, null=True)

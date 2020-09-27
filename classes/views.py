@@ -3,6 +3,7 @@ from rest_framework.views import APIView
 from .models import Class
 from .serializers import ClassSerializer
 from django.http import JsonResponse
+from channels.models import Channel
 
 
 class ClassAPIView(ModelViewSet):
@@ -17,6 +18,9 @@ class ClassAPIView(ModelViewSet):
     def create(self, request, *args, **kwargs):
         result = Class.objects.create(
             **request.data)
+        channel = Channel.objects.create(
+            name="General", creator=request.user, related_class=result)
+        channel.members.set([request.user])
         result.teachers.set([request.user])
         serialized = self.serializer_class(result)
         return JsonResponse(serialized.data)
