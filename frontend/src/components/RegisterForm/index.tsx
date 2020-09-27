@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Form } from 'semantic-ui-react';
+import { Form, Button } from 'semantic-ui-react';
 import { Register } from '../../containers/LoginPage/logic/actionTypes';
 import PasswordInput from '../common/PasswordInput';
 import validator from 'validator';
@@ -60,9 +60,9 @@ const RegisterForm: React.FC<Props> = ({ onSubmit }) => {
                 setValue={setPassword}
                 setIsValid={setPasswordValid}
             />
-            <Form.Button type="submit" primary fluid disabled={buttonDisabled}>
+            <Button type="submit" primary fluid disabled={buttonDisabled}>
                 Sign up
-            </Form.Button>
+            </Button>
         </Form>
     );
 };

@@ -4,6 +4,7 @@ import App from './containers/App';
 import * as serviceWorker from './serviceWorker';
 
 import 'semantic-ui-css/semantic.min.css';
+import 'react-notifications/lib/notifications.css';
 import './styles/index.scss';
 
 ReactDOM.render(<App />, document.getElementById('root'));

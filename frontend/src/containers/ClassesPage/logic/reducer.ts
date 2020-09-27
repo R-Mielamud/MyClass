@@ -23,4 +23,11 @@ export const classReducer = createReducer<ClassState>(initialState, {
             recentlyCreatedClass: null,
         };
     },
+    [actionTypes.JOIN_CLASS_SUCCESS](state, action: actionTypes.JoinClassSuccess) {
+        return {
+            ...state,
+            classes: [...state.classes, action.class],
+            recentlyJoinedClass: action.class,
+        };
+    },
 });

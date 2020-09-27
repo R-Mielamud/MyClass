@@ -5,6 +5,7 @@ import ClassCard from '../../components/ClassCard';
 import Spinner from '../../components/common/Spinner';
 import { RootState } from '../../typings/rootState';
 import CreateClassModal from '../CreateClassModal';
+import JoinClassModal from '../JoinClassModal';
 import styles from './styles.module.scss';
 
 const ClassesPage: React.FC = () => {
@@ -17,7 +18,9 @@ const ClassesPage: React.FC = () => {
     return (
         <div>
             <div className={styles.buttons}>
-                <Button>Join class</Button>
+                <JoinClassModal>
+                    <Button>Join class</Button>
+                </JoinClassModal>
                 <CreateClassModal>
                     <Button primary>Create new class</Button>
                 </CreateClassModal>

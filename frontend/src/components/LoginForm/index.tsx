@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Form } from 'semantic-ui-react';
+import { Form, Button } from 'semantic-ui-react';
 import { LogIn } from '../../containers/LoginPage/logic/actionTypes';
 import PasswordInput from '../common/PasswordInput';
 import validator from 'validator';
@@ -44,9 +44,9 @@ const LoginForm: React.FC<Props> = ({ onSubmit }) => {
                 setValue={setPassword}
                 setIsValid={setPasswordValid}
             />
-            <Form.Button type="submit" primary fluid disabled={buttonDisabled}>
+            <Button type="submit" primary fluid disabled={buttonDisabled}>
                 Log in
-            </Form.Button>
+            </Button>
         </Form>
     );
 };

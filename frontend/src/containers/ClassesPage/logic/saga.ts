@@ -1,6 +1,6 @@
 import { NotificationManager } from 'react-notifications';
 import { all, call, put, takeEvery } from 'redux-saga/effects';
-import { createClass, getClasses } from '../../../services/class.service';
+import { createClass, getClasses, joinClass } from '../../../services/class.service';
 import * as actions from './actions';
 import * as actionTypes from './actionTypes';
 
@@ -32,6 +32,20 @@ function* watchCreateClass() {
     yield takeEvery(actionTypes.CREATE_CLASS, fetchCreateClass);
 }
 
+function* fetchJoinClass(action: ReturnType<typeof actions.joinClass>) {
+    try {
+        const { type, ...data } = action;
+        const newClass = yield call(joinClass, data);
+        yield put(actions.joinClassSuccess({ class: newClass }));
+    } catch (err) {
+        NotificationManager.error('Invalid join key.', 'Error');
+    }
+}
+
+function* watchJoinClass() {
+    yield takeEvery(actionTypes.JOIN_CLASS, fetchJoinClass);
+}
+
 export default function* classSaga() {
-    yield all([watchLoadClasses(), watchCreateClass()]);
+    yield all([watchLoadClasses(), watchCreateClass(), watchJoinClass()]);
 }

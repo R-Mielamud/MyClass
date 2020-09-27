@@ -6,3 +6,5 @@ export const loadClassesSuccess = createAction<actionTypes.LoadClassesSuccess>(a
 export const createClass = createAction<actionTypes.CreateClass>(actionTypes.CREATE_CLASS);
 export const createClassSuccess = createAction<actionTypes.CreateClassSuccess>(actionTypes.CREATE_CLASS_SUCCESS);
 export const resetRecentlyCreated = createAction(actionTypes.RESET_RECENTLY_CREATED);
+export const joinClass = createAction<actionTypes.JoinClass>(actionTypes.JOIN_CLASS);
+export const joinClassSuccess = createAction<actionTypes.JoinClassSuccess>(actionTypes.JOIN_CLASS_SUCCESS);

@@ -6,5 +6,6 @@ router = DefaultRouter()
 router.register("", ClassAPIView, basename="class")
 
 urlpatterns = [
+    path("join/", JoinClassView.as_view()),
     path("", include(router.urls)),
 ]

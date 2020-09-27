@@ -64,6 +64,12 @@ const CreateClassModal: React.FC<Props> = ({ children }) => {
         setIsOpened(false);
     };
 
+    const resetStateAndClose = () => {
+        setLoading(false);
+        setName('');
+        setDescription(undefined);
+    };
+
     return (
         <div>
             <Modal
@@ -96,7 +102,7 @@ const CreateClassModal: React.FC<Props> = ({ children }) => {
                 </Modal.Content>
                 <Modal.Actions>
                     <div className={styles.rightButtons}>
-                        <Button onClick={() => setIsOpened(false)} type="button">
+                        <Button onClick={resetStateAndClose} type="button">
                             Cancel
                         </Button>
                         <Button
