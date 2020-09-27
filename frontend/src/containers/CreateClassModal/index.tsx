@@ -90,7 +90,7 @@ const CreateClassModal: React.FC<Props> = ({ children }) => {
                             <Form.Input fluid placeholder="Name your class" value={name} onChange={handleChangeName} />
                         </Form.Field>
                         <Form.Field>
-                            <label className="required">Description</label>
+                            <label>Description</label>
                             <Form.TextArea
                                 rows={10}
                                 placeholder="Write a short article about your class"

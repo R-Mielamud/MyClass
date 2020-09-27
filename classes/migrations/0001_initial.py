@@ -14,13 +14,15 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Class',
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', models.AutoField(auto_created=True,
+                                        primary_key=True, serialize=False, verbose_name='ID')),
                 ('key', models.CharField(max_length=20)),
                 ('name', models.CharField(max_length=50)),
                 ('color', models.CharField(max_length=7)),
                 ('avatar', models.ImageField(blank=True, null=True, upload_to='')),
                 ('join_key', models.SlugField(max_length=8)),
-                ('description', models.TextField(blank=True, max_length=1000, null=True)),
+                ('description', models.TextField(
+                    blank=True, max_length=1000, null=True)),
             ],
         ),
     ]

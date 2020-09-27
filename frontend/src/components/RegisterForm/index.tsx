@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Form, Button } from 'semantic-ui-react';
+import { Form, Button, Popup } from 'semantic-ui-react';
 import { Register } from '../../containers/LoginPage/logic/actionTypes';
 import PasswordInput from '../common/PasswordInput';
 import validator from 'validator';
@@ -14,36 +14,66 @@ const RegisterForm: React.FC<Props> = ({ onSubmit, loading }) => {
     const [emailValid, setEmailValid] = useState<boolean>(true);
     const [password, setPassword] = useState<string>('');
     const [passwordValid, setPasswordValid] = useState<boolean>(true);
-    const [firstName, setFirstName] = useState<string>('');
-    const [lastName, setLastName] = useState<string>('');
+    const [firstName, setFirstNameText] = useState<string>('');
+    const [lastName, setLastNameText] = useState<string>('');
+    const [firstNameValid, setFirstNameValid] = useState<boolean>(true);
+    const [lastNameValid, setLastNameValid] = useState<boolean>(true);
 
     const setEmail = (value: string) => {
         setEmailText(value);
         setEmailValid(true);
     };
 
-    const buttonDisabled = !Boolean(password && email && passwordValid && emailValid);
+    const setFirstName = (value: string) => {
+        setFirstNameText(value);
+        setFirstNameValid(true);
+    };
+
+    const setLastName = (value: string) => {
+        setLastNameText(value);
+        setLastNameValid(true);
+    };
+
+    const buttonDisabled = !Boolean(password && email && passwordValid && emailValid && firstName && lastName);
 
     const submit = () => {
         if (buttonDisabled) return;
-        onSubmit({ email, password });
+        onSubmit({ email, password, first_name: firstName, last_name: lastName });
     };
 
     return (
         <Form onSubmit={submit}>
-            <Form.Input
-                fluid
-                icon="user"
-                value={firstName}
-                placeholder="First name"
-                onChange={(event, data) => setFirstName(data.value)}
+            <Popup
+                on={[]}
+                open={!firstNameValid}
+                content="First name is required"
+                trigger={
+                    <Form.Input
+                        fluid
+                        icon="user"
+                        value={firstName}
+                        placeholder="First name"
+                        onChange={(event, data) => setFirstName(data.value)}
+                        onBlur={() => setFirstNameValid(Boolean(firstName))}
+                        error={!firstNameValid}
+                    />
+                }
             />
-            <Form.Input
-                fluid
-                icon="user"
-                value={lastName}
-                placeholder="Last name"
-                onChange={(event, data) => setLastName(data.value)}
+            <Popup
+                on={[]}
+                open={!lastNameValid}
+                content="Last name is required"
+                trigger={
+                    <Form.Input
+                        fluid
+                        icon="user"
+                        value={lastName}
+                        placeholder="Last name"
+                        onChange={(event, data) => setLastName(data.value)}
+                        onBlur={() => setLastNameValid(Boolean(lastName))}
+                        error={!lastNameValid}
+                    />
+                }
             />
             <Form.Input
                 fluid

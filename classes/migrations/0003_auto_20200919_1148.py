@@ -7,18 +7,20 @@ class Migration(migrations.Migration):
 
     dependencies = [
         ('authorization', '0001_initial'),
-        ('class', '0002_auto_20200919_0915'),
+        ('classes', '0002_auto_20200919_0915'),
     ]
 
     operations = [
         migrations.AddField(
             model_name='class',
             name='students',
-            field=models.ManyToManyField(related_name='studying_classes', to='authorization.User'),
+            field=models.ManyToManyField(
+                related_name='studying_classes', to='authorization.User'),
         ),
         migrations.AddField(
             model_name='class',
             name='teachers',
-            field=models.ManyToManyField(related_name='teaching_classes', to='authorization.User'),
+            field=models.ManyToManyField(
+                related_name='teaching_classes', to='authorization.User'),
         ),
     ]
