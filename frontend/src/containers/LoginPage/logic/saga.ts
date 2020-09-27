@@ -1,7 +1,7 @@
 import { NotificationManager } from 'react-notifications';
 import { all, put, call, takeEvery } from 'redux-saga/effects';
 import history from '../../../helpers/history.helper';
-import { setToken } from '../../../helpers/userToken.helper';
+import { removeToken, setToken } from '../../../helpers/userToken.helper';
 import { getProfile, logIn, register } from '../../../services/auth.service';
 import * as actions from './actions';
 import * as actionTypes from './actionTypes';
@@ -55,6 +55,20 @@ function* watchRegister() {
     yield takeEvery(actionTypes.REGISTER, fetchRegister);
 }
 
+function* fetchLogOut() {
+    try {
+        removeToken();
+        yield put(actions.successLoadProfile({ user: null }));
+        history.push('/login');
+    } catch (err) {
+        NotificationManager.error("Sorry, can't logout.", 'Error');
+    }
+}
+
+function* watchLogOut() {
+    yield takeEvery(actionTypes.LOG_OUT, fetchLogOut);
+}
+
 export default function* authSaga() {
-    yield all([watchLoadProfile(), watchLogIn(), watchRegister()]);
+    yield all([watchLoadProfile(), watchLogIn(), watchRegister(), watchLogOut()]);
 }

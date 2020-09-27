@@ -6,9 +6,10 @@ import validator from 'validator';
 
 interface Props {
     onSubmit: (data: Register) => void;
+    loading: boolean;
 }
 
-const RegisterForm: React.FC<Props> = ({ onSubmit }) => {
+const RegisterForm: React.FC<Props> = ({ onSubmit, loading }) => {
     const [email, setEmailText] = useState<string>('');
     const [emailValid, setEmailValid] = useState<boolean>(true);
     const [password, setPassword] = useState<string>('');
@@ -60,7 +61,7 @@ const RegisterForm: React.FC<Props> = ({ onSubmit }) => {
                 setValue={setPassword}
                 setIsValid={setPasswordValid}
             />
-            <Button type="submit" primary fluid disabled={buttonDisabled}>
+            <Button type="submit" primary fluid disabled={buttonDisabled} loading={loading}>
                 Sign up
             </Button>
         </Form>
