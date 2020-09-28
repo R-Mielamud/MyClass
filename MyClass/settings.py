@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     "classes",
     "authorization",
     "channels",
+    "chat",
 ]
 
 MIDDLEWARE = [
@@ -159,3 +160,7 @@ JWT_ROUTE_WHITE_LIST = [
     "/api/auth/login/",
     "/api/auth/register/",
 ]
+
+# Chat
+
+MESSAGES_COUNT_PER_PART = 100

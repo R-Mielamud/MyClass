@@ -11,13 +11,13 @@ class ClassAPIView(ModelViewSet):
     queryset = Class.objects.all()
 
     def list(self, request, *args, **kwargs):
-        result = Class.objects.filter(students__id=request.user.id) | Class.objects.filter(
+        result = self.queryset.filter(students__id=request.user.id) | self.queryset.filter(
             teachers__id=request.user.id)
         serialized = self.serializer_class(result, many=True)
         return JsonResponse(serialized.data, safe=False)
 
     def create(self, request, *args, **kwargs):
-        result = Class.objects.create(
+        result = self.queryset.create(
             **request.data)
         channel = Channel.objects.create(
             name="General", creator=request.user, related_class=result)

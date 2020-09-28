@@ -10,15 +10,15 @@ class ChannelAPIView(ModelViewSet):
     queryset = Channel.objects.all()
 
     def list(self, request):
-        class_id = int(request.GET.get("classid"))
+        class_id = request.GET.get("classid")
 
         try:
-            class_object = Class.objects.get(pk=class_id)
+            class_id = int(class_id)
         except:
             return JsonResponse({
-                "message": "Class does not exist",
+                "message": "Class id invalid",
             }, status=404)
 
-        channels = class_object.channels
+        channels = self.queryset.filter(related_class__pk=class_id)
         serialized = self.serializer_class(channels, many=True)
         return JsonResponse(serialized.data, safe=False)

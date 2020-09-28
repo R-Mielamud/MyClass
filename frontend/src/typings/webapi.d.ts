@@ -29,6 +29,13 @@ namespace WebApi.Entity {
         creator: User;
         members: User[];
     }
+
+    interface Message extends Identified {
+        author: User;
+        text: string;
+        created_at: Date;
+        updated_at: Date;
+    }
 }
 
 namespace WebApi.Specific {

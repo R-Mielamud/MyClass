@@ -1,0 +1,26 @@
+@mixin square($d) {
+    width: $d !important;
+    height: $d !important;
+}
+
+.avatar {
+    @include square(40px);
+    border-radius: 50%;
+}
+
+.lettersAvatar {
+    @extend .avatar;
+    background-color: #dddddd;
+    color: #333333;
+    text-transform: uppercase;
+    font-size: 18px;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+}
+
+.small {
+    @include square(30px);
+    font-size: 14px;
+}

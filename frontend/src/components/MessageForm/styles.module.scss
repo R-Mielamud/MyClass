@@ -1,0 +1,11 @@
+.tooltip {
+    color: #666666;
+    font-size: 10px;
+    user-select: none;
+    margin-top: -10px;
+    cursor: default;
+
+    &:hover {
+        color: #333333;
+    }
+}

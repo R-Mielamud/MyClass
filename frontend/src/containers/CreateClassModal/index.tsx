@@ -68,6 +68,7 @@ const CreateClassModal: React.FC<Props> = ({ children }) => {
         setLoading(false);
         setName('');
         setDescription(undefined);
+        setIsOpened(false);
     };
 
     return (

@@ -5,6 +5,7 @@ import ClassCard from '../../components/ClassCard';
 import Spinner from '../../components/common/Spinner';
 import userInChannel from '../../helpers/userInChannel.helper';
 import { RootState } from '../../typings/rootState';
+import ChannelView from '../ChannelView';
 import styles from './styles.module.scss';
 
 interface Props {
@@ -40,7 +41,9 @@ const ClassPage: React.FC<Props> = ({ cls }) => {
                     )}
                 </div>
             </div>
-            <div className={styles.mainContent}></div>
+            <div className={styles.mainContent}>
+                <ChannelView channel={cls.channels[0]} />
+            </div>
         </div>
     );
 };

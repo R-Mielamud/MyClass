@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Header as HeaderUI, Dropdown, Menu } from 'semantic-ui-react';
-import Avatar from '../../components/Avatar';
+import Avatar from '../../components/common/Avatar';
 import getUsername from '../../helpers/getUsername.helper';
 import { RootState } from '../../typings/rootState';
 import { logOut } from '../LoginPage/logic/actions';
