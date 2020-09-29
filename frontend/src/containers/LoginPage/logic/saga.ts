@@ -14,6 +14,7 @@ function* fetchLoadProfile() {
         yield put(actions.successLoadProfile({ user: null }));
 
         if (!/(login|register)\/?$/.test(window.location.href)) {
+            removeToken();
             history.push('/login');
         }
     }

@@ -8,13 +8,14 @@ class Migration(migrations.Migration):
 
     dependencies = [
         ('classes', '0005_class_text_color'),
-        ('channels', '0001_initial'),
+        ('class_channels', '0001_initial'),
     ]
 
     operations = [
         migrations.AddField(
             model_name='channel',
             name='related_class',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='channels', to='classes.Class'),
+            field=models.ForeignKey(
+                blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='channels', to='classes.Class'),
         ),
     ]

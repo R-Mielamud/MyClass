@@ -10,19 +10,22 @@ class Migration(migrations.Migration):
 
     dependencies = [
         ('authorization', '0002_user_avatar'),
-        ('channels', '0002_channel_related_class'),
+        ('class_channels', '0002_channel_related_class'),
     ]
 
     operations = [
         migrations.CreateModel(
             name='Message',
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', models.AutoField(auto_created=True,
+                                        primary_key=True, serialize=False, verbose_name='ID')),
                 ('text', models.TextField(max_length=1000)),
                 ('created_at', models.DateTimeField(auto_now_add=True)),
                 ('updated_at', models.DateTimeField(blank=True, null=True)),
-                ('author', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='written_messages', to='authorization.User')),
-                ('channel', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='messages', to='channels.Channel')),
+                ('author', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE,
+                                             related_name='written_messages', to='authorization.User')),
+                ('channel', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE,
+                                              related_name='messages', to='class_channels.Channel')),
             ],
         ),
     ]

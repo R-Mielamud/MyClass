@@ -1,6 +1,6 @@
 from django.db.models import *
 from authorization.models import User
-from channels.models import Channel
+from class_channels.models import Channel
 import datetime
 
 

@@ -3,7 +3,7 @@ from rest_framework.views import APIView
 from .models import Class
 from .serializers import ClassSerializer
 from django.http import JsonResponse
-from channels.models import Channel
+from class_channels.models import Channel
 
 
 class ClassAPIView(ModelViewSet):

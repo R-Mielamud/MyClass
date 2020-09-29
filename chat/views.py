@@ -3,7 +3,7 @@ from .models import Message
 from .serializers import MessageSerializer
 from django.http import JsonResponse
 from MyClass import settings
-from channels.models import Channel
+from class_channels.models import Channel
 
 
 class MessageAPIView(ModelViewSet):

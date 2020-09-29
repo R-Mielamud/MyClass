@@ -1,7 +1,7 @@
 from rest_framework.serializers import *
 from .models import Class
 from authorization.serializers import UserSerializer
-from channels.serializers import ChannelSerializer
+from class_channels.serializers import ChannelSerializer
 
 
 class ClassSerializer(ModelSerializer):

@@ -44,8 +44,10 @@ INSTALLED_APPS = [
     "rest_framework",
     "classes",
     "authorization",
-    "channels",
+    "class_channels",
     "chat",
+    "channels",
+    "sockets",
 ]
 
 MIDDLEWARE = [
